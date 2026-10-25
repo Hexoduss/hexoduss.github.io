@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Alessandro Grasso · Portfolio</title>
+<meta name="description" content="Portfolio di Alessandro Grasso: montaggio video, fotografia e regia live. Studente di Nuove Tecnologie dell'Arte all'Accademia di Belle Arti di Catania.">
+<meta property="og:title" content="Alessandro Grasso · Portfolio">
+<meta property="og:description" content="Montaggio video, fotografia e regia live.">
+<meta property="og:type" content="website">
+<meta name="theme-color" content="#121214">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%23121214'/%3E%3Ctext x='32' y='46' font-family='Impact,Arial Narrow,sans-serif' font-size='40' fill='%23e8452c' text-anchor='middle'%3EAG%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anton&family=Poppins:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="stile.css">
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div class="eyebrow">Portfolio · 2026</div>
+    <h1>Alessandro<br>Grasso</h1>
+    <p class="role">Montaggio video <span>·</span> Fotografia <span>·</span> Regia live</p>
+    <p class="intro">Studio Nuove Tecnologie dell'Arte all'Accademia di Belle Arti di Catania. Monto video essay, trailer e contenuti per YouTube, curo titoli e grafiche animate, e lavoro in regia audio/video durante eventi dal vivo.</p>
+    <div class="contacts" data-contacts></div>
+  </header>
+
+  <section class="reel" aria-labelledby="reel-title">
+    <div class="reel-head">
+      <h2 id="reel-title">Showreel</h2>
+      <span class="eyebrow tc" id="reel-dur"></span>
+    </div>
+    <div class="player" id="reel"></div>
+  </section>
+
+  <section class="works" aria-labelledby="works-title">
+    <h2 id="works-title">Lavori</h2>
+    <div class="work-list" id="works"></div>
+  </section>
+
+  <section class="photos" aria-labelledby="photo-title" id="photos">
+    <h2 id="photo-title">Fotografia</h2>
+    <div class="grid" id="grid"></div>
+  </section>
+
+  <section class="live" aria-labelledby="live-title">
+    <h2 id="live-title">Eventi dal vivo</h2>
+    <div class="live-list" id="live"></div>
+  </section>
+
+  <footer>
+    <div class="eyebrow">Contatti</div>
+    <div class="contacts" data-contacts></div>
+  </footer>
+</div>
+
+<script src="contenuti.js"></script>
+<script src="script.js"></script>
+</body>
+</html>
