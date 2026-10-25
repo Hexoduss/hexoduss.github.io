@@ -9,52 +9,111 @@
 <meta property="og:title" content="Alessandro Grasso · Portfolio">
 <meta property="og:description" content="Montaggio video, fotografia e regia live.">
 <meta property="og:type" content="website">
-<meta name="theme-color" content="#121214">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%23121214'/%3E%3Ctext x='32' y='46' font-family='Impact,Arial Narrow,sans-serif' font-size='40' fill='%23e8452c' text-anchor='middle'%3EAG%3C/text%3E%3C/svg%3E">
+<meta name="theme-color" content="#111113">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%23111113'/%3E%3Ctext x='32' y='46' font-family='Impact,Arial Narrow,sans-serif' font-size='40' fill='%23e8452c' text-anchor='middle'%3EAG%3C/text%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anton&family=Poppins:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anton&family=JetBrains+Mono:wght@400;500&family=Permanent+Marker&family=Poppins:wght@300;400;500;600&family=Rubik+Spray+Paint&display=swap">
 <link rel="stylesheet" href="stile.css">
 </head>
 <body>
-<div class="wrap">
-  <header>
-    <div class="eyebrow hero-top"><span>Portfolio · 2026</span><span class="rec" aria-hidden="true"><i></i>REC <span class="tc" id="tc">00:00:00:00</span></span></div>
-    <h1 aria-label="Alessandro Grasso"><span class="line"><span>Alessandro</span></span><span class="line"><span>Grasso</span></span></h1>
-    <div class="sweep" aria-hidden="true"></div>
-    <p class="role reveal">Montaggio video <span>·</span> Fotografia <span>·</span> Regia live</p>
-    <p class="intro reveal">Studio Nuove Tecnologie dell'Arte all'Accademia di Belle Arti di Catania. Monto video essay, trailer e contenuti per YouTube, curo titoli e grafiche animate, e lavoro in regia audio/video durante eventi dal vivo.</p>
-    <div class="contacts reveal" data-contacts></div>
-  </header>
 
-  <section class="reel" aria-labelledby="reel-title">
-    <div class="reel-head">
-      <h2 id="reel-title">Showreel</h2>
-      <span class="eyebrow tc" id="reel-dur"></span>
+<!-- sfondo: muro + macchie generate + grana -->
+<div class="wall" aria-hidden="true"></div>
+<canvas class="stains" aria-hidden="true"></canvas>
+<div class="grain" aria-hidden="true"></div>
+
+<!-- simboli vettoriali riutilizzati nelle schermate -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="g-x" viewBox="0 0 100 100"><path pathLength="1" d="M14 18 C38 40 62 62 88 86 M86 14 C62 40 40 62 12 88"/></symbol>
+    <symbol id="g-circle" viewBox="0 0 200 120"><path pathLength="1" d="M30 62 C30 20 170 8 178 56 C186 104 40 118 22 74 C12 48 70 24 120 22"/></symbol>
+    <symbol id="g-arrow" viewBox="0 0 160 120"><path pathLength="1" d="M10 20 C60 10 110 40 128 96 M104 82 L130 100 L142 70"/></symbol>
+    <symbol id="g-zig" viewBox="0 0 240 40"><path pathLength="1" d="M4 30 L30 8 L54 32 L80 8 L104 32 L130 8 L154 32 L180 8 L204 32 L236 10"/></symbol>
+    <symbol id="g-under" viewBox="0 0 600 40"><path pathLength="1" d="M8 26 C120 10 260 30 380 16 C460 8 540 18 592 12"/></symbol>
+    <symbol id="g-star" viewBox="0 0 100 100"><path pathLength="1" d="M50 6 L58 40 L94 42 L64 60 L76 94 L50 72 L22 94 L34 60 L6 42 L42 40 Z"/></symbol>
+    <symbol id="g-drips" viewBox="0 0 300 120"><path pathLength="1" d="M20 0 V40 M60 0 V86 M96 0 V30 M150 0 V110 M200 0 V54 M246 0 V76 M282 0 V24"/></symbol>
+  </defs>
+</svg>
+
+<nav class="dots" aria-label="Sezioni">
+  <a href="#inizio" data-for="inizio"><span>Inizio</span></a>
+  <a href="#showreel" data-for="showreel"><span>Showreel</span></a>
+  <a href="#lavori" data-for="lavori"><span>Lavori</span></a>
+  <a href="#foto" data-for="foto"><span>Foto</span></a>
+  <a href="#live" data-for="live"><span>Live</span></a>
+</nav>
+
+<main>
+  <!-- 1 · INIZIO -->
+  <section class="screen hero" id="inizio" data-nav="inizio">
+    <div class="spray-word" data-depth="-0.25" aria-hidden="true">alga</div>
+    <svg class="deco g-circle teal" data-depth="0.15" aria-hidden="true"><use href="#g-circle"/></svg>
+    <svg class="deco g-x red" data-depth="0.35" aria-hidden="true"><use href="#g-x"/></svg>
+    <svg class="deco g-zig bone" data-depth="-0.2" aria-hidden="true"><use href="#g-zig"/></svg>
+    <div class="deco halftone" data-depth="0.1" aria-hidden="true"></div>
+    <div class="splat" data-color="red" data-n="70" data-depth="0.3" aria-hidden="true"></div>
+
+    <div class="inner hero-inner">
+      <div class="tape fx">Portfolio · 2026</div>
+      <h1 aria-label="Alessandro Grasso">
+        <span class="line"><span>Alessandro</span></span>
+        <span class="line"><span>Grasso</span></span>
+      </h1>
+      <svg class="underline red" aria-hidden="true"><use href="#g-under"/></svg>
+      <p class="caption fx">Montaggio video <b>·</b> Fotografia <b>·</b> Regia live</p>
+      <p class="sub fx">Studio Nuove Tecnologie dell'Arte all'Accademia di Belle Arti di Catania.</p>
     </div>
-    <div class="player" id="reel"></div>
+    <a class="scroll-hint" href="#showreel"><span>scorri</span><svg aria-hidden="true"><use href="#g-arrow"/></svg></a>
   </section>
 
-  <section class="works" aria-labelledby="works-title">
-    <h2 id="works-title">Lavori</h2>
-    <div class="work-list" id="works"></div>
+  <!-- 2 · SHOWREEL -->
+  <section class="screen reel" id="showreel" data-nav="showreel">
+    <div class="spray-word right" data-depth="-0.3" aria-hidden="true">reel</div>
+    <svg class="deco g-star teal" data-depth="0.25" aria-hidden="true"><use href="#g-star"/></svg>
+    <div class="splat" data-color="teal" data-n="50" data-depth="0.2" aria-hidden="true"></div>
+    <div class="inner reel-inner">
+      <div class="head">
+        <h2 class="fx">Showreel</h2>
+        <span class="marker fx" id="reel-dur"></span>
+      </div>
+      <div class="framed fx">
+        <span class="tape-corner tl"></span><span class="tape-corner br"></span>
+        <div class="player" id="reel"></div>
+      </div>
+      <p class="sub fx">Un minuto e poco più con i pezzi migliori dei miei lavori.</p>
+    </div>
   </section>
 
-  <section class="photos" aria-labelledby="photo-title" id="photos">
-    <h2 id="photo-title">Fotografia</h2>
-    <div class="grid" id="grid"></div>
+  <!-- 3 · LAVORI (una schermata per lavoro, generate da contenuti.js) -->
+  <div id="works"></div>
+
+  <!-- 4 · FOTOGRAFIA -->
+  <section class="screen photos" id="foto" data-nav="foto">
+    <div class="spray-word" data-depth="-0.25" aria-hidden="true">foto</div>
+    <svg class="deco g-x teal" data-depth="0.3" aria-hidden="true"><use href="#g-x"/></svg>
+    <svg class="deco g-drips red" data-depth="0.12" aria-hidden="true"><use href="#g-drips"/></svg>
+    <div class="inner">
+      <div class="head"><h2 class="fx">Fotografia</h2><span class="marker fx">paesaggi · concerti · dettagli</span></div>
+      <div class="grid" id="grid"></div>
+    </div>
   </section>
 
-  <section class="live" aria-labelledby="live-title">
-    <h2 id="live-title">Eventi dal vivo</h2>
-    <div class="live-list" id="live"></div>
+  <!-- 5 · LIVE + CONTATTI -->
+  <section class="screen live" id="live" data-nav="live">
+    <div class="spray-word right" data-depth="-0.3" aria-hidden="true">live</div>
+    <svg class="deco g-circle red" data-depth="0.2" aria-hidden="true"><use href="#g-circle"/></svg>
+    <div class="splat" data-color="bone" data-n="40" data-depth="0.25" aria-hidden="true"></div>
+    <div class="inner live-inner">
+      <div class="head"><h2 class="fx">Eventi dal vivo</h2></div>
+      <div class="live-list" id="live-list"></div>
+      <div class="contact fx">
+        <span class="marker">scrivimi</span>
+        <div class="contacts" data-contacts></div>
+      </div>
+    </div>
   </section>
-
-  <footer>
-    <div class="eyebrow">Contatti</div>
-    <div class="contacts" data-contacts></div>
-  </footer>
-</div>
+</main>
 
 <script src="contenuti.js"></script>
 <script src="script.js"></script>
