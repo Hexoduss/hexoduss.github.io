@@ -48,8 +48,9 @@
     const img = w.immagine || (id ? "https://i.ytimg.com/vi/" + encodeURIComponent(id) + "/hqdefault.jpg" : "");
     const el = document.createElement("article");
     el.className = "vcard fx" + (vertical ? " vertical" : "");
+    const playable = id || w.file;
     const media = img
-      ? '<img src="' + esc(img) + '" alt="Fotogramma da ' + esc(w.titolo) + '" loading="lazy">' + (id ? '<button class="play" aria-label="Guarda ' + esc(w.titolo) + '"></button>' : "")
+      ? '<img src="' + esc(img) + '" alt="Fotogramma da ' + esc(w.titolo) + '" loading="lazy">' + (playable ? '<button class="play" aria-label="Guarda ' + esc(w.titolo) + '"></button>' : "")
       : placeholder(vertical ? w.tipo || "Video" : "Video", "in arrivo");
     el.innerHTML =
       '<div class="media">' + media + (w.durata ? '<span class="dur">' + esc(w.durata) + '</span>' : "") + '</div>' +
@@ -60,7 +61,14 @@
         (w.descrizione ? '<p class="desc">' + esc(w.descrizione) + '</p>' : "") +
       '</div>';
     const btn = $("button.play", el);
-    if (btn) btn.addEventListener("click", () => { $(".media", el).innerHTML = ytFrame(id); });
+    if (btn) btn.addEventListener("click", () => {
+      const m = $(".media", el);
+      if (id) { m.innerHTML = ytFrame(id); return; }
+      m.innerHTML = '<video controls autoplay playsinline preload="auto" src="' + esc(w.file) + '"' + (img ? ' poster="' + esc(img) + '"' : "") + '></video>';
+      // un solo video alla volta
+      const v = $("video", m);
+      $$("video").forEach((o) => { if (o !== v) o.pause(); });
+    });
     return el;
   };
   sections.forEach((sec, i) => {

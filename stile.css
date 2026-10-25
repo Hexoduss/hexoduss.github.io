@@ -137,7 +137,7 @@ svg use { stroke-width: 6; }
 .reel-inner { display: flex; flex-direction: column; gap: 0; }
 .framed { position: relative; transform: rotate(-.6deg); margin-bottom: 22px; }
 .player { position: relative; aspect-ratio: 16 / 9; max-height: 64vh; width: 100%; background: #000; border: 1px solid var(--line); overflow: hidden; box-shadow: 0 30px 80px rgba(0,0,0,.45); }
-.player video, .player iframe, .media iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; display: block; }
+.player video, .player iframe, .media iframe, .media video { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; display: block; }
 .tape-corner { position: absolute; z-index: 3; width: 110px; height: 30px; background: rgba(232,224,207,.85); box-shadow: 0 2px 0 rgba(0,0,0,.2); }
 .tape-corner.tl { left: -30px; top: -10px; transform: rotate(-28deg); }
 .tape-corner.br { right: -30px; bottom: -8px; transform: rotate(-24deg); }

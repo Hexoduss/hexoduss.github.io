@@ -23,6 +23,7 @@ window.PORTFOLIO = {
   // formato: "16:9" (orizzontale) oppure "9:16" (verticale, per i social)
   // youtube: ID o link del video (es. https://www.youtube.com/watch?v=abc123)
   // immagine: un fotogramma in img/ (se vuoto e c'è YouTube, usa la copertina di YouTube)
+  // file: in alternativa a YouTube, un mp4 caricato nella cartella video/ (max 100 MB, meglio sotto 50)
   sezioni: [
     {
       id: "essay",
@@ -38,7 +39,8 @@ window.PORTFOLIO = {
           ruolo: "Lavoro individuale: scrittura, montaggio, titoli animati e grafiche",
           descrizione: "L'autoritratto nella storia dell'arte, dalle mani nelle grotte a Velázquez, Picasso, Magritte e Dalì.",
           youtube: "",
-          immagine: ""
+          immagine: "img/cisono.jpg",
+          file: "video/autoritratto.mp4"
         },
         {
           titolo: "La nascita del cinema: Lumière vs Méliès",
@@ -47,16 +49,18 @@ window.PORTFOLIO = {
           ruolo: "Scrittura, montaggio, voce narrante e direzione artistica",
           descrizione: "Lumière contro Méliès: il cinema che documenta la realtà e quello che la inventa.",
           youtube: "",
-          immagine: ""
+          immagine: "img/nasce.jpg",
+          file: "video/nascita-cinema.mp4"
         },
         {
-          titolo: "L'arte punk: IL dadaismO",
+          titolo: "L'arte punk: il Dadaismo",
           tipo: "Video essay di gruppo",
           durata: "02:43",
           ruolo: "Regia, montaggio e direzione artistica",
           descrizione: "Dal Cabaret Voltaire a Duchamp e Hannah Höch, con un'estetica a collage di carta strappata.",
           youtube: "",
-          immagine: ""
+          immagine: "img/dada.jpg",
+          file: "video/dadaismo.mp4"
         }
       ]
     },
@@ -68,11 +72,11 @@ window.PORTFOLIO = {
       formato: "16:9",
       video: [
         {
-          titolo: "Intervista",
+          titolo: "Intervista a Leonardo Graziano",
           tipo: "Intervista",
           durata: "",
-          ruolo: "",
-          descrizione: "In fase di montaggio.",
+          ruolo: "Montaggio",
+          descrizione: "Il doppiatore italiano di Sheldon Cooper in The Big Bang Theory e di Naruto. Video in fase di montaggio.",
           youtube: "",
           immagine: ""
         }
@@ -91,10 +95,10 @@ window.PORTFOLIO = {
       ]
     },
     {
-      id: "altri",
-      titolo: "Storyboard e YouTube",
-      nota: "trailer · gameplay",
-      parola: "cut",
+      id: "storyboard",
+      titolo: "Storyboard e animatic",
+      nota: "dal disegno al montaggio",
+      parola: "frame",
       formato: "16:9",
       video: [
         {
@@ -102,10 +106,20 @@ window.PORTFOLIO = {
           tipo: "Storyboard e animatic",
           durata: "02:17",
           ruolo: "Storyboard in Storyboarder e montaggio dell'animatic",
-          descrizione: "Il trailer ridisegnato inquadratura per inquadratura e montato in split screen accanto all'originale.",
+          descrizione: "Il trailer di Fight Club ridisegnato inquadratura per inquadratura e montato in split screen accanto all'originale, sincronizzato sul suo audio.",
           youtube: "",
-          immagine: ""
-        },
+          immagine: "img/fightclub.jpg",
+          file: "video/fight-club-storytrailer.mp4"
+        }
+      ]
+    },
+    {
+      id: "gameplay",
+      titolo: "Gameplay",
+      nota: "montaggio per YouTube",
+      parola: "play",
+      formato: "16:9",
+      video: [
         {
           titolo: "La \u201cPacifist\u201d Run",
           tipo: "Video YouTube",
@@ -113,6 +127,16 @@ window.PORTFOLIO = {
           ruolo: "Montaggio, titoli e sottotitoli",
           descrizione: "Battlefield 6 nei panni di un medico di frontiera, con titoli cinetici in apertura.",
           youtube: "",
+          immagine: "img/pacifist.jpg",
+          file: "video/pacifist-run.mp4"
+        },
+        {
+          titolo: "Gameplay",
+          tipo: "Video YouTube",
+          durata: "",
+          ruolo: "Montaggio",
+          descrizione: "",
+          youtube: "https://youtu.be/_cCZz3yUErc",
           immagine: ""
         }
       ]
