@@ -108,3 +108,64 @@ footer { border-top: 1px solid var(--line); padding-top: 24px; display: flex; fl
   .grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 @media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
+
+/* ================= ANIMAZIONI ================= */
+.hero-top { display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
+.rec { display: inline-flex; align-items: center; gap: 8px; color: var(--fg); }
+.rec i { width: 8px; height: 8px; border-radius: 50%; background: var(--accent); animation: blink 1.2s steps(2, start) infinite; }
+@keyframes blink { to { visibility: hidden; } }
+
+h1 .line { display: block; overflow: hidden; padding-bottom: .04em; }
+h1 .line > span { display: inline-block; }
+.sweep { height: 3px; width: 120px; background: var(--accent); transform-origin: left; }
+
+/* grana da pellicola che "vibra" */
+body::after { animation: grain 0.9s steps(6) infinite; inset: -50%; }
+@keyframes grain {
+  0% { transform: translate(0, 0); } 20% { transform: translate(-3%, 2%); } 40% { transform: translate(2%, -3%); }
+  60% { transform: translate(-2%, -1%); } 80% { transform: translate(3%, 3%); } 100% { transform: translate(0, 0); }
+}
+
+/* segnaposto con righe che scorrono */
+.placeholder {
+  animation: stripes 6s linear infinite;
+  background:
+    repeating-linear-gradient(135deg, transparent 0 14px, rgba(255,255,255,.03) 14px 28px) 0 0 / 39.6px 39.6px,
+    var(--surface);
+}
+@keyframes stripes { to { background-position: 39.6px 0, 0 0; } }
+
+/* hover sui lavori */
+.media img { transition: transform .6s cubic-bezier(.2,.7,.2,1), filter .6s; }
+.work:hover .media img { transform: scale(1.04); }
+.work .media::before {
+  content: ""; position: absolute; left: 0; bottom: 0; height: 3px; width: 100%; z-index: 3;
+  background: var(--accent); transform: scaleX(0); transform-origin: left; transition: transform .45s cubic-bezier(.2,.7,.2,1);
+}
+.work:hover .media::before, .work:focus-within .media::before { transform: scaleX(1); }
+.chip { transition: background .3s, color .3s; }
+.work:hover .chip { background: var(--accent); color: var(--bg); }
+.grid .frame img { transition: transform .6s cubic-bezier(.2,.7,.2,1); }
+.grid figure:hover .frame img { transform: scale(1.05); }
+
+/* --- sequenza d'apertura e comparsa allo scroll (solo con JS attivo) --- */
+.js h1 .line > span { transform: translateY(105%); animation: rise .9s cubic-bezier(.2,.8,.2,1) forwards; }
+.js h1 .line:nth-child(2) > span { animation-delay: .12s; }
+.js .sweep { transform: scaleX(0); animation: sweep .8s .45s cubic-bezier(.7,0,.2,1) forwards; }
+.js header .reveal { opacity: 0; transform: translateY(14px); animation: fadeup .7s cubic-bezier(.2,.8,.2,1) forwards; }
+.js header .role { animation-delay: .55s; }
+.js header .intro { animation-delay: .7s; }
+.js header .contacts { animation-delay: .85s; }
+@keyframes rise { to { transform: translateY(0); } }
+@keyframes sweep { to { transform: scaleX(1); } }
+@keyframes fadeup { to { opacity: 1; transform: none; } }
+
+.js .scroll-in { opacity: 0; transform: translateY(28px); transition: opacity .8s cubic-bezier(.2,.8,.2,1), transform .8s cubic-bezier(.2,.8,.2,1); }
+.js .scroll-in.visible { opacity: 1; transform: none; }
+.js h2.scroll-in { clip-path: inset(0 100% 0 0); transform: none; transition: clip-path .9s cubic-bezier(.7,0,.2,1), opacity .2s; }
+.js h2.scroll-in.visible { clip-path: inset(0 0 0 0); }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+  .js h1 .line > span, .js .sweep, .js header .reveal, .js .scroll-in { opacity: 1 !important; transform: none !important; clip-path: none !important; }
+}

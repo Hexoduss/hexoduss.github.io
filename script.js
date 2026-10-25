@@ -95,3 +95,47 @@
     live.appendChild(a);
   });
 })();
+
+// ================= ANIMAZIONI =================
+(function () {
+  const reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  // timecode da registrazione nell'intestazione (25 fps)
+  const tc = document.getElementById("tc");
+  if (tc && !reduce) {
+    const t0 = performance.now();
+    const pad = (n) => String(n).padStart(2, "0");
+    const tick = () => {
+      const f = Math.floor((performance.now() - t0) / 40);
+      tc.textContent = pad(Math.floor(f / 90000) % 24) + ":" + pad(Math.floor(f / 1500) % 60) + ":" + pad(Math.floor(f / 25) % 60) + ":" + pad(f % 25);
+      requestAnimationFrame(tick);
+    };
+    requestAnimationFrame(tick);
+  }
+
+  // comparsa allo scroll
+  const targets = document.querySelectorAll("section h2, .work, .grid figure, .live article, footer");
+  if (reduce || !("IntersectionObserver" in window)) return;
+  targets.forEach((el) => el.classList.add("scroll-in"));
+  // ritardo a cascata dentro le griglie
+  document.querySelectorAll(".work-list, .grid, .live-list").forEach((list) => {
+    Array.from(list.children).forEach((c, i) => { c.style.transitionDelay = (i % 4) * 90 + "ms"; });
+  });
+  // i titoli hanno un clip-path che li rende "invisibili" all'observer: si osserva il loro contenitore
+  const watched = new Map();
+  targets.forEach((el) => {
+    const w = el.tagName === "H2" ? el.parentElement : el;
+    if (!watched.has(w)) watched.set(w, []);
+    watched.get(w).push(el);
+  });
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach((e) => {
+      if (!e.isIntersecting) return;
+      (watched.get(e.target) || []).forEach((el) => el.classList.add("visible"));
+      io.unobserve(e.target);
+    });
+  }, { rootMargin: "0px 0px -8% 0px", threshold: 0 });
+  watched.forEach((_, w) => io.observe(w));
+  // in stampa mostra tutto
+  window.addEventListener("beforeprint", () => targets.forEach((el) => el.classList.add("visible")));
+})();
