@@ -32,7 +32,7 @@ window.PORTFOLIO = {
       formato: "16:9",
       video: [
         {
-          titolo: "Ci sono",
+          titolo: "L'autoritratto nella storia dell'arte",
           tipo: "Video essay",
           durata: "04:00",
           ruolo: "Lavoro individuale: scrittura, montaggio, titoli animati e grafiche",
@@ -41,7 +41,7 @@ window.PORTFOLIO = {
           immagine: ""
         },
         {
-          titolo: "Nasce tutto da qui",
+          titolo: "La nascita del cinema: Lumière vs Méliès",
           tipo: "Video essay di gruppo",
           durata: "02:56",
           ruolo: "Scrittura, montaggio, voce narrante e direzione artistica",
@@ -50,7 +50,7 @@ window.PORTFOLIO = {
           immagine: ""
         },
         {
-          titolo: "Dadaismo",
+          titolo: "L'arte punk: IL dadaismO",
           tipo: "Video essay di gruppo",
           durata: "02:43",
           ruolo: "Regia, montaggio e direzione artistica",
