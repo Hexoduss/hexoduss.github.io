@@ -18,54 +18,104 @@ window.PORTFOLIO = {
     durata: "01:10"
   },
 
-  // ---------- LAVORI ----------
-  // youtube: ID del video (es. per https://www.youtube.com/watch?v=abc123 scrivi "abc123")
+  // ---------- SEZIONI DEI VIDEO ----------
+  // Ogni sezione è una schermata. Dentro "video" metti i lavori di quella sezione.
+  // formato: "16:9" (orizzontale) oppure "9:16" (verticale, per i social)
+  // youtube: ID o link del video (es. https://www.youtube.com/watch?v=abc123)
   // immagine: un fotogramma in img/ (se vuoto e c'è YouTube, usa la copertina di YouTube)
-  lavori: [
+  sezioni: [
     {
-      titolo: "Ci sono",
-      tipo: "Video essay",
-      durata: "04:00",
-      ruolo: "Lavoro individuale: scrittura, montaggio, titoli animati e grafiche",
-      descrizione: "L'autoritratto nella storia dell'arte, dalle mani nelle grotte a Velázquez, Picasso, Magritte e Dalì. Il testo si scrive a tempo con la voce e diventa parte del montaggio.",
-      youtube: "",
-      immagine: ""
+      id: "essay",
+      titolo: "Edit video formato essay",
+      nota: "scrittura · montaggio · grafiche",
+      parola: "essay",
+      formato: "16:9",
+      video: [
+        {
+          titolo: "Ci sono",
+          tipo: "Video essay",
+          durata: "04:00",
+          ruolo: "Lavoro individuale: scrittura, montaggio, titoli animati e grafiche",
+          descrizione: "L'autoritratto nella storia dell'arte, dalle mani nelle grotte a Velázquez, Picasso, Magritte e Dalì.",
+          youtube: "",
+          immagine: ""
+        },
+        {
+          titolo: "Nasce tutto da qui",
+          tipo: "Video essay di gruppo",
+          durata: "02:56",
+          ruolo: "Scrittura, montaggio, voce narrante e direzione artistica",
+          descrizione: "Lumière contro Méliès: il cinema che documenta la realtà e quello che la inventa.",
+          youtube: "",
+          immagine: ""
+        },
+        {
+          titolo: "Dadaismo",
+          tipo: "Video essay di gruppo",
+          durata: "02:43",
+          ruolo: "Regia, montaggio e direzione artistica",
+          descrizione: "Dal Cabaret Voltaire a Duchamp e Hannah Höch, con un'estetica a collage di carta strappata.",
+          youtube: "",
+          immagine: ""
+        }
+      ]
     },
     {
-      titolo: "Nasce tutto da qui",
-      tipo: "Video essay di gruppo",
-      durata: "02:56",
-      ruolo: "Scrittura, montaggio, voce narrante e direzione artistica",
-      descrizione: "Lumière contro Méliès: il cinema che documenta la realtà e quello che la inventa. Ritmo da video social, materiale d'archivio e qualche gag.",
-      youtube: "",
-      immagine: ""
+      id: "intervista",
+      titolo: "Video formato intervista",
+      nota: "in lavorazione",
+      parola: "talk",
+      formato: "16:9",
+      video: [
+        {
+          titolo: "Intervista",
+          tipo: "Intervista",
+          durata: "",
+          ruolo: "",
+          descrizione: "In fase di montaggio.",
+          youtube: "",
+          immagine: ""
+        }
+      ]
     },
     {
-      titolo: "Dadaismo",
-      tipo: "Video essay di gruppo",
-      durata: "02:43",
-      ruolo: "Regia, montaggio e direzione artistica",
-      descrizione: "Dal Cabaret Voltaire a Duchamp e Hannah Höch, con un'estetica a collage di carta strappata e ritagli di giornale.",
-      youtube: "",
-      immagine: ""
+      id: "social",
+      titolo: "Video formato social",
+      nota: "verticali 9:16 · reel · short",
+      parola: "feed",
+      formato: "9:16",
+      video: [
+        { titolo: "Ortigia Comics 2026", tipo: "Reel", durata: "", ruolo: "", descrizione: "", youtube: "", immagine: "" },
+        { titolo: "Ortigia Comics 2026", tipo: "Reel", durata: "", ruolo: "", descrizione: "", youtube: "", immagine: "" },
+        { titolo: "Ortigia Comics 2026", tipo: "Reel", durata: "", ruolo: "", descrizione: "", youtube: "", immagine: "" }
+      ]
     },
     {
-      titolo: "Fight Club, storytrailer",
-      tipo: "Storyboard e animatic",
-      durata: "02:17",
-      ruolo: "Storyboard in Storyboarder e montaggio dell'animatic",
-      descrizione: "Il trailer di Fight Club ridisegnato inquadratura per inquadratura e montato in split screen accanto all'originale, sincronizzato sul suo audio.",
-      youtube: "",
-      immagine: ""
-    },
-    {
-      titolo: "La “Pacifist” Run",
-      tipo: "Video YouTube",
-      durata: "06:25",
-      ruolo: "Montaggio, titoli e sottotitoli",
-      descrizione: "Una partita a Battlefield 6 nei panni di un medico di frontiera. Si apre con titoli cinetici che usano il gameplay come texture delle lettere.",
-      youtube: "",
-      immagine: ""
+      id: "altri",
+      titolo: "Storyboard e YouTube",
+      nota: "trailer · gameplay",
+      parola: "cut",
+      formato: "16:9",
+      video: [
+        {
+          titolo: "Fight Club, storytrailer",
+          tipo: "Storyboard e animatic",
+          durata: "02:17",
+          ruolo: "Storyboard in Storyboarder e montaggio dell'animatic",
+          descrizione: "Il trailer ridisegnato inquadratura per inquadratura e montato in split screen accanto all'originale.",
+          youtube: "",
+          immagine: ""
+        },
+        {
+          titolo: "La \u201cPacifist\u201d Run",
+          tipo: "Video YouTube",
+          durata: "06:25",
+          ruolo: "Montaggio, titoli e sottotitoli",
+          descrizione: "Battlefield 6 nei panni di un medico di frontiera, con titoli cinetici in apertura.",
+          youtube: "",
+          immagine: ""
+        }
+      ]
     }
   ],
 
@@ -75,8 +125,8 @@ window.PORTFOLIO = {
   // Consiglio: lato lungo 1600-2000 px, sotto 1 MB ciascuna.
   foto: [
   ],
-  // Quanti riquadri "in arrivo" mostrare finché la lista è vuota (0 per nascondere la sezione)
-  fotoSegnaposto: 8,
+  // Finché la lista è vuota il sito mostra questi riquadri "in arrivo" (svuota la lista per nasconderli)
+  fotoSegnaposto: ["Dettaglio", "Particolare", "Paesaggio", "Primo piano", "Mezzo busto", "Figura intera", "Particolare", "Paesaggio"],
 
   // ---------- EVENTI DAL VIVO ----------
   eventi: [

@@ -34,49 +34,56 @@
     reel.innerHTML = placeholder("Showreel", "in arrivo");
   }
 
-  // ---------- lavori: una schermata ciascuno ----------
-  const works = D.lavori || [];
+  // ---------- sezioni video: una schermata per formato ----------
+  const sections = D.sezioni || [];
   const holder = $("#works");
-  const words = ["essay", "cut", "dada", "frame", "play", "edit", "reel"];
   const decoSets = [
-    '<svg class="deco g-x red" data-depth="0.3" style="right:6vw;top:12vh"><use href="#g-x"/></svg><div class="splat" data-color="teal" data-n="45" data-depth="0.2" style="left:2vw;bottom:2vh"></div>',
-    '<svg class="deco g-zig teal" data-depth="0.25" style="left:6vw;top:10vh"><use href="#g-zig"/></svg><div class="halftone" data-depth="0.12" style="right:4vw;bottom:6vh"></div>',
-    '<svg class="deco g-star red" data-depth="0.3" style="right:8vw;bottom:12vh"><use href="#g-star"/></svg><svg class="deco g-drips bone" data-depth="0.1" style="left:10vw;top:0"><use href="#g-drips"/></svg>',
-    '<svg class="deco g-circle teal" data-depth="0.15" style="left:-10vw;bottom:-4vh"><use href="#g-circle"/></svg><div class="splat" data-color="red" data-n="55" data-depth="0.25" style="right:4vw;top:6vh"></div>',
-    '<svg class="deco g-x teal" data-depth="0.3" style="left:6vw;bottom:14vh"><use href="#g-x"/></svg><div class="halftone" data-depth="0.12" style="right:10vw;top:8vh"></div>'
+    '<svg class="deco g-x red" data-depth="0.3" style="right:6vw;top:10vh"><use href="#g-x"/></svg><div class="splat" data-color="teal" data-n="45" data-depth="0.2" style="left:2vw;bottom:2vh"></div>',
+    '<svg class="deco g-zig teal" data-depth="0.25" style="left:6vw;top:8vh"><use href="#g-zig"/></svg><div class="halftone" data-depth="0.12" style="right:4vw;bottom:6vh"></div>',
+    '<svg class="deco g-star red" data-depth="0.3" style="right:8vw;bottom:10vh"><use href="#g-star"/></svg><svg class="deco g-drips bone" data-depth="0.1" style="left:10vw;top:0"><use href="#g-drips"/></svg>',
+    '<svg class="deco g-circle teal" data-depth="0.15" style="right:-14vw;bottom:-12vh"><use href="#g-circle"/></svg><div class="splat" data-color="red" data-n="55" data-depth="0.25" style="right:4vw;top:6vh"></div>'
   ];
-  works.forEach((w, i) => {
+  const card = (w, vertical) => {
     const id = cleanYT(w.youtube);
     const img = w.immagine || (id ? "https://i.ytimg.com/vi/" + encodeURIComponent(id) + "/hqdefault.jpg" : "");
-    const s = document.createElement("section");
-    s.className = "screen work" + (i % 2 ? " flip" : "");
-    s.id = i === 0 ? "lavori" : "lavoro-" + (i + 1);
-    s.dataset.nav = "lavori";
+    const el = document.createElement("article");
+    el.className = "vcard fx" + (vertical ? " vertical" : "");
     const media = img
       ? '<img src="' + esc(img) + '" alt="Fotogramma da ' + esc(w.titolo) + '" loading="lazy">' + (id ? '<button class="play" aria-label="Guarda ' + esc(w.titolo) + '"></button>' : "")
-      : placeholder(w.titolo, "video in arrivo");
-    s.innerHTML =
-      '<div class="spray-word' + (i % 2 ? "" : " right") + '" data-depth="-0.28" aria-hidden="true">' + words[i % words.length] + '</div>' +
-      '<div aria-hidden="true">' + decoSets[i % decoSets.length] + '</div>' +
-      '<div class="inner work-inner">' +
-        '<div class="work-media fx">' +
-          '<svg class="deco scribble ' + (i % 2 ? "red" : "teal") + '" aria-hidden="true"><use href="#g-arrow"/></svg>' +
-          '<div class="media">' + media + (w.durata ? '<span class="dur">' + esc(w.durata) + '</span>' : "") + '</div>' +
-        '</div>' +
-        '<div class="work-text">' +
-          '<span class="count fx">Lavori · ' + (i + 1) + ' di ' + works.length + '</span>' +
-          '<h3 class="fx">' + esc(w.titolo) + '</h3>' +
-          '<span class="chip fx">' + esc(w.tipo) + '</span>' +
-          '<p class="role fx">' + esc(w.ruolo) + '</p>' +
-          '<p class="desc fx">' + esc(w.descrizione) + '</p>' +
-        '</div>' +
+      : placeholder(vertical ? w.tipo || "Video" : "Video", "in arrivo");
+    el.innerHTML =
+      '<div class="media">' + media + (w.durata ? '<span class="dur">' + esc(w.durata) + '</span>' : "") + '</div>' +
+      '<div class="vtext">' +
+        (w.tipo && !vertical ? '<span class="chip">' + esc(w.tipo) + '</span>' : "") +
+        '<h3>' + esc(w.titolo) + '</h3>' +
+        (w.ruolo ? '<p class="role">' + esc(w.ruolo) + '</p>' : "") +
+        (w.descrizione ? '<p class="desc">' + esc(w.descrizione) + '</p>' : "") +
       '</div>';
-    const btn = $("button.play", s);
-    if (btn) btn.addEventListener("click", () => { $(".media", s).innerHTML = ytFrame(id); });
+    const btn = $("button.play", el);
+    if (btn) btn.addEventListener("click", () => { $(".media", el).innerHTML = ytFrame(id); });
+    return el;
+  };
+  sections.forEach((sec, i) => {
+    const vids = sec.video || [];
+    const vertical = sec.formato === "9:16";
+    const s = document.createElement("section");
+    const layout = vertical ? "is-vertical" : vids.length === 1 ? "is-single" : "is-" + Math.min(vids.length, 3);
+    s.className = "screen vsec " + layout;
+    s.id = sec.id || "sezione-" + (i + 1);
+    s.dataset.nav = s.id;
+    s.innerHTML =
+      '<div class="spray-word' + (i % 2 ? "" : " right") + '" data-depth="-0.28" aria-hidden="true">' + esc(sec.parola || "edit") + '</div>' +
+      '<div aria-hidden="true">' + decoSets[i % decoSets.length] + '</div>' +
+      '<div class="inner">' +
+        '<div class="head"><h2 class="fx">' + esc(sec.titolo) + '</h2>' + (sec.nota ? '<span class="marker fx">' + esc(sec.nota) + '</span>' : "") + '</div>' +
+        '<div class="vgrid"></div>' +
+      '</div>';
+    const grid = $(".vgrid", s);
+    vids.forEach((w, k) => { const c = card(w, vertical); c.style.setProperty("--r", (k % 2 ? 1 : -1) * (0.6 + (k % 3) * 0.4) + "deg"); grid.appendChild(c); });
     holder.appendChild(s);
   });
-  // le schermate sono figlie di #works: lo sostituisco con loro per lo snap
   holder.replaceWith(...holder.children);
+  $$(".vgrid").forEach((g) => Array.from(g.children).forEach((c, k) => { c.style.transitionDelay = (150 + k * 110) + "ms"; }));
 
   // ---------- foto ----------
   const grid = $("#grid");
@@ -90,8 +97,8 @@
   };
   if (foto.length) {
     foto.slice(0, 8).forEach((p) => grid.appendChild(fig('<img src="' + esc(p.file) + '" alt="' + esc(p.didascalia || "Fotografia") + '" loading="lazy">', p.didascalia)));
-  } else if (D.fotoSegnaposto) {
-    for (let i = 0; i < Math.min(8, D.fotoSegnaposto); i++) grid.appendChild(fig(placeholder("Foto", "in arrivo")));
+  } else if (D.fotoSegnaposto && D.fotoSegnaposto.length) {
+    D.fotoSegnaposto.slice(0, 8).forEach((lab) => grid.appendChild(fig(placeholder(lab, "in arrivo"))));
   } else {
     $("#foto").hidden = true;
   }
