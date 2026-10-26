@@ -288,6 +288,14 @@ svg use { stroke-width: 6; }
 .vgrid { display: grid; gap: 40px 32px; align-items: start; }
 .is-3 .vgrid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
 .is-2 .vgrid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+/* 4 video: griglia 2 × 2, ogni scheda con video a sinistra e testo a destra */
+.is-grid4 .vgrid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 32px 40px; }
+.is-grid4 .vcard { display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr); gap: 18px; align-items: center; }
+.is-grid4 .vtext { gap: 6px; }
+.is-grid4 .vtext h3 { font-size: clamp(20px, 1.8vw, 28px); }
+.is-grid4 .vtext .role, .is-grid4 .vtext .desc { font-size: 13px; line-height: 1.5; }
+.is-grid4 .vtext .desc { display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+.is-grid4 .chip { font-size: 10px; padding: 3px 8px; }
 .is-single .vgrid { grid-template-columns: minmax(0, 1fr); }
 .vcard { display: flex; flex-direction: column; gap: 16px; min-width: 0; }
 .vcard .media { transform: rotate(var(--r, 0deg)); transition: transform .9s var(--ease); }
@@ -300,7 +308,7 @@ svg use { stroke-width: 6; }
 .is-single .vcard { display: grid; grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr); gap: 48px; align-items: center; }
 .is-single .vtext h3 { font-size: clamp(40px, 5vw, 72px); }
 .is-vertical .vgrid { display: flex; flex-wrap: wrap; justify-content: center; gap: 32px; }
-.vcard.vertical { width: min(100%, calc(56vh * 9 / 16), 300px); }
+.vcard.vertical { width: min(100%, calc(50vh * 9 / 16), 300px); }
 .vcard.vertical .media { aspect-ratio: 9 / 16; }
 .vcard.vertical .vtext h3 { font-size: clamp(20px, 1.8vw, 26px); }
 .vcard .placeholder strong { font-size: clamp(22px, 2.4vw, 34px); }
@@ -310,7 +318,8 @@ svg use { stroke-width: 6; }
 .photo-notes .alt { color: var(--bone); font-size: clamp(15px, 1.5vw, 19px); transform: rotate(1deg); }
 
 @media (max-width: 900px) {
-  .is-3 .vgrid, .is-2 .vgrid { grid-template-columns: minmax(0, 1fr); }
+  .is-3 .vgrid, .is-2 .vgrid, .is-grid4 .vgrid { grid-template-columns: minmax(0, 1fr); }
+  .is-grid4 .vcard { grid-template-columns: minmax(0, 1fr); }
   .is-single .vcard { grid-template-columns: minmax(0, 1fr); gap: 20px; }
   .is-vertical .vgrid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
   .vcard.vertical { width: auto; }

@@ -75,7 +75,7 @@
     const vids = sec.video || [];
     const vertical = sec.formato === "9:16";
     const s = document.createElement("section");
-    const layout = vertical ? "is-vertical" : vids.length === 1 ? "is-single" : "is-" + Math.min(vids.length, 3);
+    const layout = vertical ? "is-vertical" : vids.length === 1 ? "is-single" : vids.length === 4 ? "is-grid4" : "is-" + Math.min(vids.length, 3);
     s.className = "screen vsec " + layout;
     s.id = sec.id || "sezione-" + (i + 1);
     s.dataset.nav = s.id;

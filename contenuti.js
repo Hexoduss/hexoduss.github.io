@@ -99,7 +99,7 @@ window.PORTFOLIO = {
       parola: "feed",
       formato: "9:16",
       video: [
-        { titolo: "Ortigia Comics 2026", tipo: "Reel", durata: "", ruolo: "", descrizione: "", youtube: "", immagine: "" },
+        { titolo: "Ortigia Comics & Games · Grazie 1000", tipo: "Reel", durata: "00:36", ruolo: "", descrizione: "", youtube: "", immagine: "img/ortigia-grazie-1000.jpg", file: "video/ortigia-grazie-1000.mp4" },
         { titolo: "Ortigia Comics 2026", tipo: "Reel", durata: "", ruolo: "", descrizione: "", youtube: "", immagine: "" },
         { titolo: "Ortigia Comics 2026", tipo: "Reel", durata: "", ruolo: "", descrizione: "", youtube: "", immagine: "" }
       ]
