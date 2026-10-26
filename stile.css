@@ -61,7 +61,8 @@ main { position: relative; z-index: 2; }
 .screen {
   position: relative; min-height: 100vh; min-height: 100svh;
   scroll-snap-align: start; scroll-snap-stop: always;
-  display: flex; align-items: center; overflow: hidden;
+  display: flex; align-items: center;
+  overflow-x: clip; overflow-y: visible; /* le scritte di sfondo sconfinano in alto e in basso invece di essere tagliate */
   padding-left: max(20px, env(safe-area-inset-left, 0px));
   padding-right: max(20px, env(safe-area-inset-right, 0px));
   padding-block: 72px;

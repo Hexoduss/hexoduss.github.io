@@ -188,13 +188,20 @@
   const dots = $$(".dots a");
   const setNav = (key) => dots.forEach((d) => d.classList.toggle("on", d.dataset.for === key));
   if ("IntersectionObserver" in window) {
+    // animazioni: partono appena la schermata entra (15%) e si azzerano solo quando è uscita del tutto,
+    // così le scritte non vengono tagliate mentre si passa da una schermata all'altra
     const io = new IntersectionObserver((entries) => {
       entries.forEach((e) => {
-        if (e.isIntersecting) { e.target.classList.add("on"); setNav(e.target.dataset.nav); }
-        else if (!reduce) e.target.classList.remove("on");
+        if (e.isIntersecting && e.intersectionRatio >= 0.15) e.target.classList.add("on");
+        else if (!e.isIntersecting && !reduce) e.target.classList.remove("on");
       });
-    }, { threshold: 0.5 });
+    }, { threshold: [0, 0.15] });
     screens.forEach((s) => io.observe(s));
+    // puntini: segue la schermata che occupa più spazio
+    const ioNav = new IntersectionObserver((entries) => {
+      entries.forEach((e) => { if (e.isIntersecting) setNav(e.target.dataset.nav); });
+    }, { threshold: 0.5 });
+    screens.forEach((s) => ioNav.observe(s));
     // le schermate più alte dello schermo (telefono) si attivano anche solo entrando
     const io2 = new IntersectionObserver((entries) => {
       entries.forEach((e) => { if (e.isIntersecting && e.target.offsetHeight > innerHeight * 1.3) e.target.classList.add("on"); });
