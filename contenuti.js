@@ -39,7 +39,7 @@ window.PORTFOLIO = {
           ruolo: "Lavoro individuale: scrittura, montaggio, titoli animati e grafiche",
           descrizione: "L'autoritratto nella storia dell'arte, dalle mani nelle grotte a Velázquez, Picasso, Magritte e Dalì.",
           youtube: "",
-          immagine: "img/cisono.jpg",
+          immagine: "img/autoritratto.jpg",
           file: "video/autoritratto.mp4"
         },
         {
@@ -49,7 +49,7 @@ window.PORTFOLIO = {
           ruolo: "Scrittura, montaggio, voce narrante e direzione artistica",
           descrizione: "Lumière contro Méliès: il cinema che documenta la realtà e quello che la inventa.",
           youtube: "",
-          immagine: "img/nasce.jpg",
+          immagine: "img/nascita-cinema.jpg",
           file: "video/nascita-cinema.mp4"
         },
         {
@@ -59,7 +59,7 @@ window.PORTFOLIO = {
           ruolo: "Regia, montaggio e direzione artistica",
           descrizione: "Dal Cabaret Voltaire a Duchamp e Hannah Höch, con un'estetica a collage di carta strappata.",
           youtube: "",
-          immagine: "img/dada.jpg",
+          immagine: "img/dadaismo.jpg",
           file: "video/dadaismo.mp4"
         },
         {
