@@ -131,13 +131,14 @@ window.PORTFOLIO = {
           file: "video/pacifist-run.mp4"
         },
         {
-          titolo: "Gameplay",
+          titolo: "La spedizione peggiore di sempre",
           tipo: "Video YouTube",
-          durata: "",
-          ruolo: "Montaggio",
-          descrizione: "",
-          youtube: "https://youtu.be/_cCZz3yUErc",
-          immagine: ""
+          durata: "17:50",
+          ruolo: "Montaggio, titoli e sottotitoli",
+          descrizione: "Una scalata in cooperativa su Peak, dall'aereo precipitato sull'isola fino alla vetta, con il contatore delle cadute in sovrimpressione.",
+          youtube: "",
+          immagine: "img/peak.jpg",
+          file: "video/peak.mp4"
         }
       ]
     }
