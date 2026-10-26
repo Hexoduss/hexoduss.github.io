@@ -164,10 +164,19 @@ window.PORTFOLIO = {
   // ---------- EVENTI DAL VIVO ----------
   eventi: [
     {
+      data: "11/2026",
+      titolo: "Milan Games Week & Cartoomics 2026 · Milano",
+      punti: [
+        "In programma dal 27 al 29 novembre, a Fiera Milano",
+        "Per conto di RMS"
+      ]
+    },
+    {
       data: "10/2026",
       titolo: "Ortigia Comics 2026 · Siracusa",
       punti: [
-        "Montaggio di video in formato social durante l'evento",
+        "Videomaker dell'evento: riprese e montaggio dei contenuti video",
+        "Edit in più formati, dai reel verticali ai video per il web",
         "Servizio fotografico della fiera"
       ]
     },

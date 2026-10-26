@@ -198,7 +198,7 @@ svg use { stroke-width: 6; }
 
 /* ---------- 5 · live ---------- */
 .live-inner { display: flex; flex-direction: column; gap: 32px; }
-.live-list { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 32px; }
+.live-list { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr)); gap: 32px; }
 .live-list article { border-top: 2px solid var(--line); padding-top: 18px; display: flex; flex-direction: column; gap: 8px; min-width: 0; }
 .live-list .when { font-family: var(--mono); font-size: 12px; letter-spacing: .16em; color: var(--red); }
 .live-list h3 { font-family: var(--body); font-weight: 600; font-size: 19px; }
@@ -208,7 +208,7 @@ svg use { stroke-width: 6; }
 .contacts { display: flex; flex-wrap: wrap; gap: 10px 36px; font-family: var(--mono); font-size: clamp(14px, 1.6vw, 18px); }
 .contacts span { user-select: all; }
 .contacts b { font-weight: 400; color: var(--muted); margin-right: 10px; }
-.live .g-circle { right: -8vw; bottom: 7vh; transform: rotate(8deg); }
+.live .g-circle { width: min(26vw, 340px); right: -10vw; bottom: 3vh; transform: rotate(8deg); }
 .live .splat { right: 14vw; top: 6vh; }
 
 /* ---------- navigazione a puntini ---------- */
@@ -316,3 +316,5 @@ svg use { stroke-width: 6; }
   .vcard.vertical { width: auto; }
   .photo-notes { align-items: flex-start; }
 }
+
+@media (max-height: 760px) { .live .g-circle { display: none; } }
