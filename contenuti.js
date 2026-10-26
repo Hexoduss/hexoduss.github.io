@@ -61,6 +61,16 @@ window.PORTFOLIO = {
           youtube: "",
           immagine: "img/dada.jpg",
           file: "video/dadaismo.mp4"
+        },
+        {
+          titolo: "Pop! Zuppa, fumetti e quindici minuti di fama",
+          tipo: "Video essay di gruppo",
+          durata: "03:10",
+          ruolo: "Sceneggiatura, montaggio, grafiche e direzione artistica",
+          descrizione: "La Pop Art degli anni Cinquanta e Sessanta, da Warhol e Lichtenstein a Oldenburg e alla Scuola di Piazza del Popolo, con un'estetica da serigrafia e fumetto.",
+          youtube: "",
+          immagine: "img/popart.jpg",
+          file: "video/pop-art.mp4"
         }
       ]
     },
