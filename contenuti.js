@@ -149,6 +149,14 @@ window.PORTFOLIO = {
   // { file: "foto/etna.jpg", didascalia: "Valle del Bove, Etna · 2025" },
   // Consiglio: lato lungo 1600-2000 px, sotto 1 MB ciascuna.
   foto: [
+    { file: "foto/occhio.jpg", didascalia: "Particolare · 2025" },
+    { file: "foto/concerto.jpg", didascalia: "Concerto, Acireale · 2026" },
+    { file: "foto/angelo-rijeka.jpg", didascalia: "Halloween, Rijeka · 2025" },
+    { file: "foto/etna.jpg", didascalia: "Etna · 2025" },
+    { file: "foto/vicolo-gatto.jpg", didascalia: "Figura intera · 2025" },
+    { file: "foto/ritratto-luce.jpg", didascalia: "Primo piano · 2025" },
+    { file: "foto/tetti-crepuscolo.jpg", didascalia: "Crepuscolo · 2025" },
+    { file: "foto/mirino.jpg", didascalia: "Dettaglio · 2025" }
   ],
   // Finché la lista è vuota il sito mostra questi riquadri "in arrivo" (svuota la lista per nasconderli)
   fotoSegnaposto: ["Dettaglio", "Particolare", "Paesaggio", "Primo piano", "Mezzo busto", "Figura intera", "Particolare", "Paesaggio"],
