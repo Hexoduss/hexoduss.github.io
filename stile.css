@@ -62,7 +62,7 @@ main { position: relative; z-index: 2; }
   position: relative; min-height: 100vh; min-height: 100svh;
   scroll-snap-align: start; scroll-snap-stop: always;
   display: flex; align-items: center;
-  overflow-x: clip; overflow-y: visible; /* le scritte di sfondo sconfinano in alto e in basso invece di essere tagliate */
+  overflow: hidden; /* ogni schermata mostra solo le sue grafiche */
   padding-left: max(20px, env(safe-area-inset-left, 0px));
   padding-right: max(20px, env(safe-area-inset-right, 0px));
   padding-block: 72px;
@@ -74,12 +74,12 @@ main { position: relative; z-index: 2; }
 
 /* parola spray enorme di fondo */
 .spray-word {
-  position: absolute; z-index: 1; left: -2vw; bottom: -6vh;
-  font-family: var(--spray); font-size: clamp(140px, 32vw, 460px); line-height: .8;
+  position: absolute; z-index: 1; left: -2vw; bottom: 9vh;
+  font-family: var(--spray); font-size: clamp(110px, min(28vw, 44vh), 420px); line-height: .8;
   color: var(--teal); opacity: .12; transform: rotate(-6deg); white-space: nowrap; pointer-events: none;
   text-transform: lowercase;
 }
-.spray-word.right { left: auto; right: -3vw; top: -4vh; bottom: auto; transform: rotate(5deg); color: var(--red); opacity: .11; }
+.spray-word.right { left: auto; right: -3vw; top: 9vh; bottom: auto; transform: rotate(5deg); color: var(--red); opacity: .11; }
 
 /* segni vettoriali */
 .deco, .underline, .scroll-hint svg { fill: none; stroke-linecap: round; stroke-linejoin: round; }
@@ -173,7 +173,7 @@ svg use { stroke-width: 6; }
 .work .work-media .g-x, .work .work-media .g-arrow-deco { position: absolute; }
 .work .scribble { position: absolute; z-index: 4; width: 130px; aspect-ratio: 160 / 120; right: -40px; top: -60px; }
 .work.flip .scribble { right: auto; left: -40px; transform: scaleX(-1); }
-.work .spray-word { font-size: clamp(120px, 24vw, 360px); }
+.work .spray-word { font-size: clamp(110px, min(22vw, 40vh), 360px); }
 
 /* segnaposto "in arrivo" */
 .placeholder {
@@ -208,7 +208,7 @@ svg use { stroke-width: 6; }
 .contacts { display: flex; flex-wrap: wrap; gap: 10px 36px; font-family: var(--mono); font-size: clamp(14px, 1.6vw, 18px); }
 .contacts span { user-select: all; }
 .contacts b { font-weight: 400; color: var(--muted); margin-right: 10px; }
-.live .g-circle { right: -8vw; bottom: -6vh; transform: rotate(8deg); }
+.live .g-circle { right: -8vw; bottom: 7vh; transform: rotate(8deg); }
 .live .splat { right: 14vw; top: 6vh; }
 
 /* ---------- navigazione a puntini ---------- */

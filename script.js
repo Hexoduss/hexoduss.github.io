@@ -41,7 +41,7 @@
     '<svg class="deco g-x red" data-depth="0.3" style="right:6vw;top:10vh"><use href="#g-x"/></svg><div class="splat" data-color="teal" data-n="45" data-depth="0.2" style="left:2vw;bottom:2vh"></div>',
     '<svg class="deco g-zig teal" data-depth="0.25" style="left:6vw;top:8vh"><use href="#g-zig"/></svg><div class="halftone" data-depth="0.12" style="right:4vw;bottom:6vh"></div>',
     '<svg class="deco g-star red" data-depth="0.3" style="right:8vw;bottom:10vh"><use href="#g-star"/></svg><svg class="deco g-drips bone" data-depth="0.1" style="left:10vw;top:0"><use href="#g-drips"/></svg>',
-    '<svg class="deco g-circle teal" data-depth="0.15" style="right:-14vw;bottom:-12vh"><use href="#g-circle"/></svg><div class="splat" data-color="red" data-n="55" data-depth="0.25" style="right:4vw;top:6vh"></div>'
+    '<svg class="deco g-circle teal" data-depth="0.15" style="right:-22vw;bottom:2vh"><use href="#g-circle"/></svg><div class="splat" data-color="red" data-n="55" data-depth="0.25" style="left:40vw;top:1vh"></div>'
   ];
   const card = (w, vertical) => {
     const id = cleanYT(w.youtube);
@@ -80,7 +80,7 @@
     s.id = sec.id || "sezione-" + (i + 1);
     s.dataset.nav = s.id;
     s.innerHTML =
-      '<div class="spray-word' + (i % 2 ? "" : " right") + '" data-depth="-0.28" aria-hidden="true">' + esc(sec.parola || "edit") + '</div>' +
+      '<div class="spray-word' + (i % 2 ? "" : " right") + '" aria-hidden="true">' + esc(sec.parola || "edit") + '</div>' +
       '<div aria-hidden="true">' + decoSets[i % decoSets.length] + '</div>' +
       '<div class="inner">' +
         '<div class="head"><h2 class="fx">' + esc(sec.titolo) + '</h2>' + (sec.nota ? '<span class="marker fx">' + esc(sec.nota) + '</span>' : "") + '</div>' +
