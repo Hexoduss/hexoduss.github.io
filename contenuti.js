@@ -77,13 +77,14 @@ window.PORTFOLIO = {
     {
       id: "intervista",
       titolo: "Video formato intervista",
-      nota: "in lavorazione",
+      nota: "professionale · meme",
       parola: "talk",
       formato: "16:9",
       video: [
         {
           titolo: "Intervista a Leonardo Graziano",
-          tipo: "Intervista",
+          tipo: "Intervista professionale",
+          inArrivo: "coming soon",
           durata: "",
           ruolo: "Montaggio",
           descrizione: "Il doppiatore italiano di Sheldon Cooper in The Big Bang Theory e di Naruto. Video in fase di montaggio.",

@@ -51,7 +51,7 @@
     const playable = id || w.file;
     const media = img
       ? '<img src="' + esc(img) + '" alt="Fotogramma da ' + esc(w.titolo) + '" loading="lazy">' + (playable ? '<button class="play" aria-label="Guarda ' + esc(w.titolo) + '"></button>' : "")
-      : placeholder(vertical ? w.tipo || "Video" : "Video", "in arrivo");
+      : placeholder(vertical ? w.tipo || "Video" : "Video", w.inArrivo || "in arrivo");
     el.innerHTML =
       '<div class="media">' + media + (w.durata ? '<span class="dur">' + esc(w.durata) + '</span>' : "") + '</div>' +
       '<div class="vtext">' +
