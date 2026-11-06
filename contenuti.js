@@ -82,6 +82,16 @@ window.PORTFOLIO = {
       formato: "16:9",
       video: [
         {
+          titolo: "The Academy",
+          tipo: "Intervista formato meme",
+          durata: "02:41",
+          ruolo: "Montaggio, grafiche e sottotitoli",
+          descrizione: "Un'intervista (quasi seria) alle matricole dell'Accademia di Belle Arti di Catania su come si stanno ambientando, tra red flag in sovrimpressione, nomi sbagliati e un villager di Minecraft.",
+          youtube: "",
+          immagine: "img/intervista-taw.jpg",
+          file: "video/intervista-taw.mp4"
+        },
+        {
           titolo: "Intervista a Leonardo Graziano",
           tipo: "Intervista professionale",
           inArrivo: "coming soon",
