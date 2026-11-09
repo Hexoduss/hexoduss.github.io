@@ -112,6 +112,86 @@
   }
   $$(".grid figure").forEach((f, i) => { f.style.transitionDelay = (i * 70) + "ms"; });
 
+  // ---------- foto ingrandite (lightbox con le foto vicine ai lati) ----------
+  if (foto.length) {
+    const pics = foto.slice(0, 8);
+    const lb = document.createElement("div");
+    lb.className = "lb"; lb.hidden = true;
+    lb.setAttribute("role", "dialog"); lb.setAttribute("aria-modal", "true"); lb.setAttribute("aria-label", "Foto ingrandita");
+    lb.innerHTML =
+      '<button type="button" class="lb-btn lb-close" aria-label="Chiudi">&times;</button>' +
+      '<button type="button" class="lb-btn lb-prev" aria-label="Foto precedente">&#8249;</button>' +
+      '<button type="button" class="lb-btn lb-next" aria-label="Foto successiva">&#8250;</button>' +
+      '<div class="lb-track"></div>' +
+      '<div class="lb-count"></div>';
+    document.body.appendChild(lb);
+    const track = $(".lb-track", lb);
+    pics.forEach((p, i) => {
+      const sl = document.createElement("figure");
+      sl.className = "lb-slide"; sl.dataset.i = i;
+      sl.innerHTML = '<div class="lb-frame"><img src="' + esc(p.file) + '" alt="' + esc(p.didascalia || "Fotografia") + '"></div>' +
+        (p.didascalia ? '<figcaption>' + esc(p.didascalia) + '</figcaption>' : "");
+      track.appendChild(sl);
+    });
+    const slides = $$(".lb-slide", lb);
+    let cur = 0, lastFocus = null;
+    const place = () => {
+      const first = slides[0];
+      const w = first.offsetWidth;
+      const gap = parseFloat(getComputedStyle(track).columnGap || getComputedStyle(track).gap) || 0;
+      const x = innerWidth / 2 - w / 2 - cur * (w + gap);
+      track.style.transform = "translateX(" + x + "px)";
+      slides.forEach((sl, i) => sl.classList.toggle("is-cur", i === cur));
+      $(".lb-count", lb).textContent = (cur + 1) + " / " + slides.length;
+      $(".lb-prev", lb).disabled = cur === 0;
+      $(".lb-next", lb).disabled = cur === slides.length - 1;
+    };
+    const go = (i) => { cur = Math.max(0, Math.min(slides.length - 1, i)); place(); };
+    const open = (i) => {
+      lastFocus = document.activeElement;
+      lb.hidden = false; document.documentElement.classList.add("lb-open");
+      track.style.transition = "none"; go(i);
+      requestAnimationFrame(() => { track.style.transition = ""; lb.classList.add("show"); });
+      $(".lb-close", lb).focus();
+    };
+    const close = () => {
+      lb.classList.remove("show"); document.documentElement.classList.remove("lb-open");
+      setTimeout(() => { lb.hidden = true; }, reduce ? 0 : 250);
+      if (lastFocus) lastFocus.focus();
+    };
+    $$(".grid figure").forEach((f, i) => {
+      const fr = $(".frame", f);
+      fr.setAttribute("role", "button"); fr.tabIndex = 0;
+      fr.setAttribute("aria-label", "Ingrandisci: " + (pics[i].didascalia || "foto " + (i + 1)));
+      fr.addEventListener("click", () => open(i));
+      fr.addEventListener("keydown", (e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); open(i); } });
+    });
+    $(".lb-close", lb).addEventListener("click", close);
+    $(".lb-prev", lb).addEventListener("click", (e) => { e.stopPropagation(); go(cur - 1); });
+    $(".lb-next", lb).addEventListener("click", (e) => { e.stopPropagation(); go(cur + 1); });
+    // clic fuori dalla cornice: chiude; clic su una foto vicina: ci va
+    lb.addEventListener("click", (e) => {
+      const fr = e.target.closest(".lb-frame");
+      if (!fr) { if (!e.target.closest(".lb-btn")) close(); return; }
+      const i = +fr.parentElement.dataset.i;
+      if (i !== cur) go(i);
+    });
+    addEventListener("keydown", (e) => {
+      if (lb.hidden) return;
+      if (e.key === "Escape") close();
+      else if (e.key === "ArrowRight") { e.preventDefault(); go(cur + 1); }
+      else if (e.key === "ArrowLeft") { e.preventDefault(); go(cur - 1); }
+    });
+    let tx = null;
+    lb.addEventListener("touchstart", (e) => { tx = e.touches[0].clientX; }, { passive: true });
+    lb.addEventListener("touchend", (e) => {
+      if (tx === null) return;
+      const dx = e.changedTouches[0].clientX - tx; tx = null;
+      if (Math.abs(dx) > 50) go(cur + (dx < 0 ? 1 : -1));
+    });
+    addEventListener("resize", () => { if (!lb.hidden) place(); });
+  }
+
   // ---------- eventi ----------
   const live = $("#live-list");
   (D.eventi || []).forEach((e, i) => {
